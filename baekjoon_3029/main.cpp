@@ -1,30 +1,15 @@
-#include <iostream>
+#include <cstdio>
 using namespace std;
 
-char a[9], b[9];
-int ha[3], hb[3], h, m, s;
-int i, j;
+int h1, m1, s1, h2, m2, s2, o,t;
+
 int main() {
-	cin >> a >> b;
-	for (; j < 3; i+=3,j++) {
-		ha[j] = (a[i]-'0') * 10 + (a[i + 1]-'0');
-		hb[j] = (b[i]-'0') * 10 + (b[i + 1]-'0');
-	}
-	s += hb[2] - ha[2];
-	if (s < 0) {
-		s += 60;
-		m--;
-	}
-	m += hb[1] - ha[1];
-	if (m < 0) {
-		m += 60;
-		h--;
-	}
-	h += hb[0] - ha[0];
-	if (h < 0) {
-		h += 24;
-	}
-	if (h == 0 && m == 0 && s == 0) cout << "24:00:00";
-	else cout << h / 10 << h % 10 << ":" << m / 10 << m % 10 << ":" << s / 10 << s % 10;
+	scanf_s("%d:%d:%d",&h1,&m1,&s1);
+	scanf_s("%d:%d:%d", &h2,&m2,&s2);
+	o = h1 * 3600 + m1 * 60 + s1;
+	t = h2 * 3600 + m2 * 60 + s2;
+	if (o > t) t += 86400;
+	t -= o;
+	printf("%02d:%02d:%02d", t / 3600, (t%3600) / 60, t%60);
 	return 0;
 }
